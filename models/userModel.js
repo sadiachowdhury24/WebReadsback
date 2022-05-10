@@ -17,7 +17,11 @@ const userSchema = mongoose.Schema(
         type: String,
         required: true,
       },
-      
+      likedBooks: {
+        type: [String],
+        default: "Lie by Moonlight"
+        //default: ["Lie by Moonlight", "The Wizard of Oz"]
+      },
     },
     {
         //to see when the data was added to the database

@@ -31,6 +31,7 @@ const registerUser = asyncHandler(async (req, res) => {
            name: user.name,
            email: user.email,
            token: generateToken(user._id),
+           likedBooks: "['Lie by Moonlight', 'The Wizard of Oz']",
        });
    } else{
        res.status(400);
@@ -52,6 +53,7 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             token: generateToken(user._id),
+            likedBooks: "['Lie by Moonlight', 'The Wizard of Oz']",
         });
     } else{
         res.status(400);
