@@ -68,8 +68,13 @@ const getUsers = asyncHandler(async(req,res)=> {
     const users = await User.find()
     res.json(users);
 })
-
-
+/*
+const currentUser = asyncHandler(async(req,res)=>{
+    const me = JSON.parse(localStorage.getItem('userInfo'));
+    console.log(me);
+    res.json(me);
+})
+*/
 
 module.exports = { registerUser, authUser, getUsers};
 

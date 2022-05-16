@@ -29,7 +29,19 @@ app.get('api/users/allusers',(req, res)=>{
         }
     )
 });
-
+/*
+app.get('/recommend',(req, res)=>{
+    request(
+        {url:'https://web-reads-ml.herokuapp.com/recommend'},
+        (error, response, body)=>{
+            if (error || response.statusCode !== 200){
+                return res.status(500).json({type: 'error', message: err.message});
+            }
+            res.json(JSON.parse(body));
+        }
+    )
+});
+*/
 //Api GET request
 app.get("/", (req,res) => {
     res.send("API is running for Webreads");
