@@ -47,6 +47,7 @@ app.get("/", (req,res) => {
     res.send("API is running for Webreads");
 });
 
+
 // using the userRoutes file from the routes folder
 app.use('/api/users', userRoutes);
 
