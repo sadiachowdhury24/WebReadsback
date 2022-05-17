@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel'); //importing userModel
 const generateToken = require('../utils/generateToken');
+const LGid = require('../models/myidModel');
 
 
 // Registration
@@ -45,7 +46,9 @@ const authUser = asyncHandler(async (req, res) => {
     //requesting from the user
     const { email, password } = req.body;
 
+
     const user = await User.findOne({ email });
+
 
     if(user && (await user.matchPassword(password)))  {
         res.json({
@@ -68,15 +71,24 @@ const getUsers = asyncHandler(async(req,res)=> {
     const users = await User.find()
     res.json(users);
 })
-/*
-const currentUser = asyncHandler(async(req,res)=>{
-    const me = JSON.parse(localStorage.getItem('userInfo'));
-    console.log(me);
-    res.json(me);
-})
-*/
 
-module.exports = { registerUser, authUser, getUsers};
+const getMe = asyncHandler(async(req,res)=>{
+    const meID = await LGid.find()
+    res.json(meID);
+})
+
+const addID = asyncHandler(async(req,res)=>{
+    const {loginID} = req.body;
+    //console.log(loginID);
+    const meep = await LGid.create({
+        myID: req.body.loginID,
+    });
+    res.json({
+        myID: meep.myID,
+    });
+})
+
+module.exports = { registerUser, authUser, getUsers, getMe, addID};
 
 
 
