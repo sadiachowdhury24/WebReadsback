@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+const bookRoutes = require('./routes/bookRoutes');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 const cors = require('cors');
 
@@ -49,7 +50,7 @@ app.get("/", (req,res) => {
 
 // using the userRoutes file from the routes folder
 app.use('/api/users', userRoutes) 
-
+app.use('/api/books', bookRoutes)
 //calling error middlewares
 app.use(notFound);
 app.use(errorHandler);
