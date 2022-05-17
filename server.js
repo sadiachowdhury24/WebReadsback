@@ -48,7 +48,7 @@ app.get("/", (req,res) => {
 });
 
 // using the userRoutes file from the routes folder
-app.use('/api/users', userRoutes) 
+app.use('/api/users', userRoutes);
 
 //calling error middlewares
 app.use(notFound);
