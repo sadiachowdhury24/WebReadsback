@@ -86,8 +86,11 @@ const getMe = asyncHandler(async(req,res)=>{
 
 const addID = asyncHandler(async(req,res)=>{
     const {loginID} = req.body;
+    const meep = await LGid.create({
+        loginID
+    });
     res.json({
-        myID: loginID,
+        myID: meep.myID,
     });
 })
 
