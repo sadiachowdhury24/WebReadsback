@@ -1,5 +1,3 @@
-
-
 //import express dependency
 const express = require('express');
 const dotenv = require('dotenv');
@@ -23,7 +21,7 @@ app.use((req, res, next)=>{
 
 app.get('api/users/allusers',(req, res)=>{
     request(
-        {url:'https://web-reads-backend.herokuapp.com/api/users/allusers'},
+        {url:'https://web-reads-backend.herokuapp.com'},
         (error, response, body)=>{
             if (error || response.statusCode !== 200){
                 return res.status(500).json({type: 'error', message: err.message});
@@ -50,12 +48,6 @@ app.get("/", (req,res) => {
     res.send("API is running for Webreads");
 });
 
-<<<<<<< HEAD
-=======
-
-// using the userRoutes file from the routes folder
-app.use('/api/users', userRoutes);
->>>>>>> ac4948c751d4a80d42d48c4f50cc623e178c18b4
 
 // using the userRoutes file from the routes folder
 app.use('/api/users', userRoutes);
