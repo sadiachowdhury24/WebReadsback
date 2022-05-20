@@ -1,3 +1,5 @@
+
+
 //import express dependency
 const express = require('express');
 const dotenv = require('dotenv');
@@ -21,7 +23,7 @@ app.use((req, res, next)=>{
 
 app.get('api/users/allusers',(req, res)=>{
     request(
-        {url:'https://web-reads-backend.herokuapp.com'},
+        {url:'https://web-reads-backend.herokuapp.com/api/users/allusers'},
         (error, response, body)=>{
             if (error || response.statusCode !== 200){
                 return res.status(500).json({type: 'error', message: err.message});
