@@ -72,6 +72,16 @@ const getUsers = asyncHandler(async(req,res)=> {
     res.json(users);
 })
 
+<<<<<<< HEAD
+=======
+//const getUserById
+/*
+var yee;
+function fun2(()
+    yee
+)
+*/
+>>>>>>> ac4948c751d4a80d42d48c4f50cc623e178c18b4
 const getMe = asyncHandler(async(req,res)=>{
     const meID = await LGid.find()
     res.json(meID);
@@ -81,11 +91,25 @@ const addID = asyncHandler(async(req,res)=>{
     const {loginID} = req.body;
     //console.log(loginID);
     const meep = await LGid.create({
+<<<<<<< HEAD
         myID: req.body.loginID,
+=======
+        myID: req.body.myID
+>>>>>>> ac4948c751d4a80d42d48c4f50cc623e178c18b4
     });
     res.json({
         myID: meep.myID,
     });
+<<<<<<< HEAD
+=======
+})
+
+/*
+const currentUser = asyncHandler(async(req,res)=>{
+    const me = JSON.parse(localStorage.getItem('userInfo'));
+    console.log(me);
+    res.json(me);
+>>>>>>> ac4948c751d4a80d42d48c4f50cc623e178c18b4
 })
 
 module.exports = { registerUser, authUser, getUsers, getMe, addID};

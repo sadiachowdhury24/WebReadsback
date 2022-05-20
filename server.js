@@ -50,6 +50,12 @@ app.get("/", (req,res) => {
     res.send("API is running for Webreads");
 });
 
+<<<<<<< HEAD
+=======
+
+// using the userRoutes file from the routes folder
+app.use('/api/users', userRoutes);
+>>>>>>> ac4948c751d4a80d42d48c4f50cc623e178c18b4
 
 // using the userRoutes file from the routes folder
 app.use('/api/users', userRoutes);
