@@ -19,8 +19,6 @@ const userSchema = mongoose.Schema(
       },
       likedBooks: {
         type: [String],
-        default: "Lie by Moonlight"
-        //default: ["Lie by Moonlight", "The Wizard of Oz"]
       },
     },
     {
