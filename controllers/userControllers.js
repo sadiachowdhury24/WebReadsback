@@ -82,7 +82,7 @@ const getUserById = asyncHandler(async(req,res) => {
 
 const likeBook = asyncHandler(async(req,res) => {
 
-    User.findOneAndUpdate(req.params.id, {likedBooks: req.body.likedBooks}, function(err, doc) {
+    User.findOneAndUpdate({_id:req.params.id}, {likedBooks: req.body.likedBooks}, function(err, doc) {
         if (err) return res.send(500, {error: err});
         return res.send('Succesfully saved.');
     });
