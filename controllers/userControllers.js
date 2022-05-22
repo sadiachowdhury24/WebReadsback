@@ -32,7 +32,6 @@ const registerUser = asyncHandler(async (req, res) => {
            name: user.name,
            email: user.email,
            token: generateToken(user._id),
-           likedBooks: "['Lie by Moonlight', 'The Wizard of Oz']",
        });
    } else{
        res.status(400);
@@ -56,7 +55,6 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             token: generateToken(user._id),
-            likedBooks: "['Lie by Moonlight', 'The Wizard of Oz']",
         });
     } else{
         res.status(400);
@@ -72,6 +70,37 @@ const getUsers = asyncHandler(async(req,res)=> {
     res.json(users);
 })
 
+const getUserById = asyncHandler(async(req,res) => {
+    const userid = await User.findById(req.params.id);
+    if (userid){
+        res.json(userid);
+    }
+    else{
+        res.status(404).json({message: "User not found"});
+    }
+});
+
+const likeBook = asyncHandler(async(req,res) => {
+
+    User.findOneAndUpdate(req.params.id, {likedBooks: req.body.likedBooks}, function(err, doc) {
+        if (err) return res.send(500, {error: err});
+        return res.send('Succesfully saved.');
+    });
+
+    // const userid = await User.findById(req.params.id);
+    // const {updateBook} = req.body;
+   
+    // const updated = userid.update({
+    //     likedBooks: ["abcd"]
+    // });
+    // if (userid){
+    //     res.json({likedBooks: updated.likedBooks});
+    // }
+    // else{
+    //     res.status(404).json({message: "User not found"});
+    // }
+});
+
 //const getUserById
 /*
 var yee;
@@ -79,6 +108,7 @@ function fun2(()
     yee
 )
 */
+
 const getMe = asyncHandler(async(req,res)=>{
     const meID = await LGid.find()
     res.json(meID);
@@ -102,7 +132,7 @@ const currentUser = asyncHandler(async(req,res)=>{
     res.json(me);
 })*/
 
-module.exports = { registerUser, authUser, getUsers, getMe, addID};
+module.exports = { registerUser, authUser, getUsers, getMe, addID, getUserById, likeBook};
 
 
 
